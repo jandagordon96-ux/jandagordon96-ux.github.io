@@ -1,0 +1,641 @@
+:root {
+  --ink: #14110f;
+  --muted: #625c55;
+  --paper: #fffaf0;
+  --panel: #ffffff;
+  --gold: #f6c343;
+  --red: #b51e23;
+  --deep-red: #781114;
+  --charcoal: #24211e;
+  --line: rgba(20, 17, 15, 0.14);
+  --shadow: 0 22px 55px rgba(20, 17, 15, 0.16);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  padding: 10px clamp(18px, 4vw, 58px) 14px;
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(120, 17, 20, 0.96), rgba(36, 33, 30, 0.98) 42%, rgba(20, 17, 15, 0.98)),
+    var(--charcoal);
+  border-bottom: 4px solid var(--gold);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(20, 17, 15, 0.24);
+}
+
+.brand img {
+  width: 168px;
+  height: auto;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.34));
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.91rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.nav a,
+.header-call,
+.contact-links a,
+.quick-contact a {
+  text-decoration: none;
+}
+
+.nav a:hover,
+.contact-links a:hover,
+.quick-contact a:hover {
+  color: var(--gold);
+}
+
+.nav a {
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(246, 195, 67, 0.36);
+}
+
+.header-call {
+  padding: 12px 18px;
+  color: #1b1206;
+  background: var(--gold);
+  border: 2px solid #d49b16;
+  border-radius: 6px;
+  font-weight: 900;
+  box-shadow: 0 8px 0 rgba(120, 17, 20, 0.86);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  justify-items: end;
+  min-height: clamp(660px, 82vh, 820px);
+  background:
+    linear-gradient(90deg, rgba(20, 17, 15, 0.22), rgba(20, 17, 15, 0.74) 58%, rgba(20, 17, 15, 0.88)),
+    url("assets/hero-white-trim-house.png") center / cover no-repeat;
+}
+
+.hero-panel {
+  display: grid;
+  align-content: center;
+  gap: clamp(18px, 2.4vw, 28px);
+  width: min(760px, 100%);
+  min-height: 100%;
+  padding: clamp(30px, 5vw, 64px);
+  color: #fff;
+  background: linear-gradient(90deg, rgba(20, 17, 15, 0.34), rgba(20, 17, 15, 0.72));
+  backdrop-filter: blur(1px);
+}
+
+.hero-content {
+  max-width: 720px;
+  scroll-margin-top: 140px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+button,
+label,
+input,
+select,
+textarea {
+  min-width: 0;
+}
+
+h1 {
+  margin: 0;
+  max-width: 15ch;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin: 14px 0 10px;
+  font-size: 1.3rem;
+}
+
+.hero-copy {
+  max-width: 690px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.91);
+  font-size: clamp(1.02rem, 1.8vw, 1.24rem);
+  line-height: 1.48;
+}
+
+.hero-about {
+  display: grid;
+  gap: 10px;
+  max-width: 620px;
+  margin-top: 18px;
+  padding-left: 16px;
+  border-left: 4px solid var(--gold);
+}
+
+.hero-about p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.button.primary {
+  color: #1b1206;
+  background: var(--gold);
+  border-color: #d49b16;
+}
+
+.button.secondary {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.48);
+}
+
+.quick-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 26px;
+  padding: 18px clamp(18px, 4vw, 58px);
+  color: #fff;
+  background: var(--red);
+  font-weight: 900;
+  text-align: center;
+}
+
+.quick-contact p {
+  width: 100%;
+  margin: 0;
+}
+
+.section {
+  padding: clamp(64px, 9vw, 110px) clamp(20px, 6vw, 74px);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: clamp(28px, 6vw, 76px);
+  align-items: start;
+}
+
+.intro > p,
+.contact-copy > p,
+.service-grid p {
+  color: var(--muted);
+  font-size: 1.07rem;
+  line-height: 1.7;
+}
+
+.section-heading {
+  max-width: 850px;
+  margin-bottom: 34px;
+}
+
+.services {
+  color: #fff;
+  background: var(--charcoal);
+}
+
+.services .section-heading h2,
+.services h3 {
+  color: #fff;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.service-grid article {
+  min-height: 260px;
+  padding: 28px;
+  background: #2f2b27;
+}
+
+.service-grid span {
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.service-grid p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gallery figure {
+  margin: 0;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.gallery figcaption {
+  padding: 15px 18px 18px;
+  font-weight: 900;
+}
+
+.quote-band {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 26px;
+  align-items: center;
+  padding: clamp(42px, 7vw, 72px) clamp(20px, 6vw, 74px);
+  color: #fff;
+  background: var(--red);
+}
+
+.quote-band .eyebrow {
+  color: var(--gold);
+}
+
+.areas {
+  background: #fff;
+}
+
+.area-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.area-list span {
+  padding: 12px 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
+  gap: clamp(28px, 6vw, 72px);
+  background: var(--charcoal);
+  color: #fff;
+}
+
+.contact-copy {
+  align-self: center;
+}
+
+.contact-copy > p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.contact-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 26px;
+  font-size: 1.14rem;
+  font-weight: 900;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+  padding: clamp(20px, 4vw, 34px);
+  background: #fff;
+  border-radius: 8px;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.hero-form {
+  max-width: 520px;
+  gap: 11px;
+  padding: clamp(18px, 2.8vw, 26px);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
+}
+
+.hero-form h2 {
+  color: var(--ink);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1.05;
+}
+
+.hero-form input,
+.hero-form select {
+  min-height: 42px;
+}
+
+.hero-form textarea {
+  min-height: 84px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  font-size: 0.91rem;
+  font-weight: 900;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  font: inherit;
+}
+
+.site-footer {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 38px 20px;
+  text-align: center;
+  background: #100f0e;
+  color: #fff;
+}
+
+.site-footer img {
+  width: 150px;
+}
+
+.site-footer p {
+  max-width: 620px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.site-footer a {
+  color: var(--gold);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .brand img {
+    width: 148px;
+  }
+
+  .nav {
+    grid-column: 1 / -1;
+    order: 3;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .intro,
+  .contact,
+  .quote-band {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    justify-items: stretch;
+    background:
+      linear-gradient(0deg, rgba(20, 17, 15, 0.84), rgba(20, 17, 15, 0.45)),
+      url("assets/hero-white-trim-house.png") center / cover no-repeat;
+  }
+
+  .hero-form {
+    max-width: none;
+  }
+
+  .quote-band {
+    justify-items: start;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    gap: 12px;
+    padding: 10px 14px;
+  }
+
+  .header-call {
+    padding: 10px 12px;
+    font-size: 0.86rem;
+    box-shadow: 0 5px 0 var(--deep-red);
+  }
+
+  .brand img {
+    width: 126px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 7px;
+    overflow-x: visible;
+    font-size: 0.74rem;
+    line-height: 1.1;
+  }
+
+  .nav a {
+    padding: 8px 9px;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+
+  .hero-panel {
+    padding: 34px 18px 42px;
+  }
+
+  h1 {
+    max-width: 100%;
+    font-size: clamp(2.25rem, 12vw, 2.75rem);
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: clamp(1.62rem, 9vw, 2.15rem);
+    line-height: 1.05;
+  }
+
+  .hero-copy,
+  .hero-about p,
+  .intro > p,
+  .contact-copy > p,
+  .service-grid p {
+    font-size: 0.98rem;
+  }
+
+  .hero-actions,
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .button {
+    min-height: 46px;
+    padding: 12px 14px;
+    font-size: 0.84rem;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-grid article {
+    min-height: auto;
+  }
+
+  form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .header-call {
+    justify-self: center;
+  }
+
+  .brand img {
+    width: 116px;
+  }
+
+  .nav {
+    justify-content: center;
+    font-size: 0.7rem;
+  }
+
+  .hero-panel,
+  .section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  h1 {
+    font-size: 2.08rem;
+  }
+}
