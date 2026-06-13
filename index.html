@@ -12,10 +12,16 @@
       <a class="brand" href="#top" aria-label="Firehouse Pressure Washing home">
         <img src="assets/logo-transparent.png" alt="Firehouse Pressure Washing logo">
       </a>
-      <nav class="nav" aria-label="Primary navigation">
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="primary-nav" class="nav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#work">Before & After</a>
+        <a href="#reviews">Reviews</a>
         <a href="#areas">Areas</a>
         <a href="#estimate-form">Contact</a>
       </nav>
@@ -133,6 +139,37 @@
         </div>
       </section>
 
+      <section id="reviews" class="reviews section">
+        <div class="section-heading">
+          <p class="eyebrow">Google reviews</p>
+          <h2>What customers say about Firehouse Pressure Washing.</h2>
+          <p>5.0 rating from 8 Google reviews. Tap any review to read more on Google.</p>
+        </div>
+        <div class="review-carousel" aria-label="Customer reviews">
+          <button class="review-arrow" type="button" data-review-prev aria-label="Previous review">‹</button>
+          <div class="review-window">
+            <div class="review-grid" data-review-track>
+              <a class="review-card" href="https://share.google/c0huc1JWzioKAFoby" target="_blank" rel="noopener" aria-label="Read Linda Clemons review on Google">
+                <span class="stars small" aria-hidden="true">★★★★★</span>
+                <p>"Sam with Firehouse did a great job on my driveway, walk, porch, patio, gutters and vinyl."</p>
+                <strong>Linda Clemons</strong>
+              </a>
+              <a class="review-card" href="https://share.google/c0huc1JWzioKAFoby" target="_blank" rel="noopener" aria-label="Read Ron Dupee review on Google">
+                <span class="stars small" aria-hidden="true">★★★★★</span>
+                <p>"Sam did an excellent job. Thorough, quick, fairly priced and always great to support a fellow first responder."</p>
+                <strong>Ron Dupee</strong>
+              </a>
+              <a class="review-card" href="https://share.google/c0huc1JWzioKAFoby" target="_blank" rel="noopener" aria-label="Read Brittany Jenkins review on Google">
+                <span class="stars small" aria-hidden="true">★★★★★</span>
+                <p>"Our driveway looks almost brand new again. I highly recommend him if you're looking for someone reliable."</p>
+                <strong>Brittany Jenkins</strong>
+              </a>
+            </div>
+          </div>
+          <button class="review-arrow" type="button" data-review-next aria-label="Next review">›</button>
+        </div>
+      </section>
+
       <section class="quote-band">
         <div>
           <p class="eyebrow">Free estimates</p>
@@ -175,6 +212,8 @@
     </footer>
     <script>
       const estimateForm = document.querySelector("#estimate-form");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const primaryNav = document.querySelector("#primary-nav");
 
       const headerOffset = () => document.querySelector(".site-header").offsetHeight + 18;
 
@@ -219,14 +258,43 @@
             scrollFormIntoView(target);
           } else if (hash === "#areas") {
             scrollTargetToCenter(target);
-          } else if (hash === "#services" || hash === "#work") {
+          } else if (hash === "#services" || hash === "#work" || hash === "#reviews") {
             scrollTargetToTop(target.querySelector(".section-heading") || target);
           } else {
             target.scrollIntoView({ behavior: "smooth", block: "center" });
           }
 
           history.pushState(null, "", hash);
+
+          primaryNav.classList.remove("is-open");
+          menuToggle.setAttribute("aria-expanded", "false");
         });
+      });
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = primaryNav.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      document.querySelectorAll(".review-carousel").forEach((carousel) => {
+        const track = carousel.querySelector("[data-review-track]");
+        const cards = Array.from(carousel.querySelectorAll(".review-card"));
+        const previous = carousel.querySelector("[data-review-prev]");
+        const next = carousel.querySelector("[data-review-next]");
+        let activeReview = 0;
+
+        const showReview = (index) => {
+          activeReview = (index + cards.length) % cards.length;
+          track.style.transform = `translateX(-${activeReview * 100}%)`;
+          cards.forEach((card, cardIndex) => {
+            card.tabIndex = cardIndex === activeReview ? 0 : -1;
+            card.setAttribute("aria-hidden", cardIndex === activeReview ? "false" : "true");
+          });
+        };
+
+        previous.addEventListener("click", () => showReview(activeReview - 1));
+        next.addEventListener("click", () => showReview(activeReview + 1));
+        showReview(0);
       });
 
       estimateForm.addEventListener("submit", (event) => {
